@@ -3,6 +3,7 @@
 <head>
 <title>Life Figure-OuterApplication</title>
 <link rel="stylesheet" type="text/css" href="index.css" />
+<script src="index.js" ></script>
 </head>
 <body>
 <div id="container">
@@ -13,13 +14,13 @@
 </div>
 
 <div id="menubar">
-<a href="" title="No place like...">Home</a>
-<a href="" title="Nothing interesting here">Interests</a>
-<a href="" title="Ugh, don't get me sick">Health</a>
-<a href="" title="Hmmmm, quite">Academic</a>
-<a href="" title="Get to work!">Professional</a>
-<a href="" title="F is for friends who do stuff together...">Fun</a>
-<a href="" title="Muhahahahahaha!">Evil</a>
+<a href="" class="disable" title="No place like...">Home</a>
+<a href="" class="disable" title="Nothing interesting here">Interests</a>
+<a href="" class="disable" title="Ugh, don't get me sick">Health</a>
+<a href="" class="disable" title="Hmmmm, quite">Academic</a>
+<a href="" class="disable" title="Get to work!">Professional</a>
+<a href="" class="disable" title="F is for friends who do stuff together...">Fun</a>
+<a href="" class="disable" title="Muhahahahahaha!">Evil</a>
 </div>
 
 <div id="main">
@@ -39,7 +40,7 @@ How would you like to feel? <br/>
 </div>
 
 <div id="wanttofeel">
-<input type="text" name="feeling"><br/>
+<input type="text" name="feelinginput" id="feelinginput"><br/>
 <select multiple>
 <option value="numb">Comfortably Numb</option>
 <option value="grumpy">Grumpy as poop, you jerk</option>
@@ -48,7 +49,7 @@ How would you like to feel? <br/>
 </select><br/>
 </div>
 <div id="submit">
-<input type="submit" value="Feel me!">
+<input type="submit" id="submit" value="Feel me!">
 </div>
 
 </div>
