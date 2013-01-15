@@ -1,4 +1,44 @@
 body {
 	background-color: #AAAAAA;
 	font-family:"Arial";
+	color: #000000;
+}
+
+div#container {
+	border:1px solid;
+	border-color: black;
+	background-color: #ffffff;
+	margin-left: 2%;
+	margin-right:2%;
+	margin-top: -7.75px;
+}
+
+div#header {
+	background-color: #cccccc;
+	margin-top: -25px;
+	padding-left: 1%;
+	padding-bottom: 1px;
+	margin-bottom: -6px;
+	letter-spacing: -2px;
+}
+
+div#header p {
+	color: #666666;
+	background-color: #cccccc;
+	letter-spacing: 0px;
+}
+
+div#menubar {
+	background-color: #000000;
+	padding: 10px;
+}
+
+div#menubar a {
+	color: #ffffff;
+	text-decoration: none;
+	padding-right: 30px;
+}
+
+div#main h2 {
+	font-size: 1.75em;
 }
