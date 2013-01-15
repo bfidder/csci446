@@ -7,7 +7,7 @@ body {
 div#container {
 	border:1px solid;
 	border-color: black;
-	background-color: #ffffff;
+	background-color: #fcfcfc;
 	margin-left: 2%;
 	margin-right:2%;
 	margin-top: -7.75px;
@@ -18,14 +18,15 @@ div#header {
 	margin-top: -25px;
 	padding-left: 1%;
 	padding-bottom: 1px;
-	margin-bottom: -6px;
-	letter-spacing: -2px;
+	margin-bottom: -5px;
+	letter-spacing: -1px;
 }
 
 div#header p {
 	color: #666666;
 	background-color: #cccccc;
 	letter-spacing: 0px;
+	margin-top: -24px;
 }
 
 div#menubar {
@@ -41,4 +42,57 @@ div#menubar a {
 
 div#main h2 {
 	font-size: 1.75em;
+	letter-spacing: -1px;
+}
+
+div#main {
+	background-color: #fcfcfc;
+	padding-left: 1%;
+}
+
+div#progress {
+	background-color: #f0f0ff;
+	float: right;
+	margin: 10px;
+	margin-top: -75px;
+	width: 30%;
+}
+
+div#progress h2{
+	font-size: 1.5em;
+}
+div#progress p {
+	font-size:1.1em;
+}
+
+div#forms {
+	width: 70%;
+	height:175px;
+}
+
+div#feeling {
+	width: 300%;
+}
+
+div#wanttofeel {
+	width: 70%;
+	float: right;
+	margin-top: -80px;
+}
+
+div#wanttofeel select {
+	margin-top: 16px;
+}
+
+div#submit {
+	float: right;
+	margin-top: 50px;
+	margin-right: -70px;
+}
+
+div#footer {
+	background-color: #f0f0f0;
+	padding: .25px;
+	text-align: center;
+	margin-top: 10px;
 }
