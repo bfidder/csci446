@@ -1,0 +1,7 @@
+colors:
+header: #CCCCCC
+font-color:#666666
+
+right-side:#f0f0ff
+
+footer: #f0f0f0
