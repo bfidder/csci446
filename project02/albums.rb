@@ -20,8 +20,31 @@ class Album
 	end
 	
 	def render_list(request)
-		response = Rack::Response.new(request.path)
-		response.finish
+		highlight = request.GET["rank"]
+		order = request.GET["order"]
+		list = IO.binread("list.html")
+		input = IO.readlines("top_100_albums.txt").collect { |x| x.chomp }
+		albums = input.zip((1..100).to_a).collect { |album, rank| album.split(", ") << rank }
+		list += "<p>sorted by"
+		case order
+		when "rank" then albums.sort_by! { |x| x[2] }; list += " rank</p>"
+		when "name" then albums.sort_by! { |x| x[0] }; list += " name</p>"
+		when "year" then albums.sort_by! { |x| x[1] }; list += " year</p>"
+		end
+		
+		albums.each do |album|
+			list += "<tr"
+			list += " class='highlight'" if album[2] == highlight.to_i
+			list += "><td>#{album[2]}</td><td>#{album[0]}</td><td>#{album[1]}</td></tr>"
+		end	
+		list += "</select>"
+		list += "</body>"
+		list += "</html>"
+		[200, {"Context-Type" => "text/html"}, [list]]	
+	end
+	
+	def render_highlight(request)
+		[200, {"Content-Type" => "text/css"}, [IO.binread("highlight.css")]]
 	end
 	
 	def render_404
