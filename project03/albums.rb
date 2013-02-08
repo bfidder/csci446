@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'rack'
+require 'sqlite3'
 
 class Album
   	def call(env)
@@ -13,34 +14,25 @@ class Album
 	end
 	
 	def render_form(request)
-		form = IO.binread("form.html")
-		(1..100).each { |i| form += "<option value='#{i}'>#{i}</option>" }
-		form += IO.binread("form_end.html")
-		[200, {"Context-Type" => "text/html"}, [form]]
+		response = Rack::Response.new
+		response.write(ERB.new(File.read("form.html.erb")).result(binding))
+		response.finish
 	end
 	
 	def render_list(request)
+		response = Rack::Response.new
 		highlight = request.GET["rank"]
 		order = request.GET["order"]
-		list = IO.binread("list.html")
-		input = IO.readlines("top_100_albums.txt").collect { |x| x.chomp }
-		albums = input.zip((1..100).to_a).collect { |album, rank| album.split(", ") << rank }
-		list += "<p>sorted by"
-		case order
-		when "rank" then albums.sort_by! { |x| x[2] }; list += " rank</p>"
-		when "name" then albums.sort_by! { |x| x[0] }; list += " name</p>"
-		when "year" then albums.sort_by! { |x| x[1] }; list += " year</p>"
-		end
-		
-		albums.each do |album|
+		db = SQLite3::Database.new( "albums.sqlite3.db" )
+		rows = db.execute( "select * from albums ORDER BY #{order}" )
+		list = ""
+		rows.each do |row|
 			list += "<tr"
-			list += " class='highlight'" if album[2] == highlight.to_i
-			list += "><td>#{album[2]}</td><td>#{album[0]}</td><td>#{album[1]}</td></tr>"
+			list += " class='highlight'" if row[0] == highlight.to_i
+			list += "><td>#{row[0]}</td><td>#{row[1]}</td><td>#{row[2]}</td></tr>"
 		end	
-		list += "</select>"
-		list += "</body>"
-		list += "</html>"
-		[200, {"Context-Type" => "text/html"}, [list]]	
+		response.write(ERB.new(File.read("list.html.erb")).result(binding))
+		response.finish
 	end
 	
 	def render_highlight(request)
