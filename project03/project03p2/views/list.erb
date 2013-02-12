@@ -1,0 +1,7 @@
+	<p>sorted by: <%=@order%></p>
+	<table>
+		<%@albums.each do |album| %>
+		<tr <%="class='highlight'" if album[:rank] == @highlight.to_i%>>
+		<td><%=album[:rank]%></td><td><%=album[:title]%></td><td><%=album[:year]%></td></tr>
+		<%end%>
+	</table>

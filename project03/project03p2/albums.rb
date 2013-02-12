@@ -7,6 +7,14 @@ DataMapper.setup(:default, "sqlite3://#{Dir.pwd}/albums.sqlite3.db")
 
 set :port, 8080
 
-get "/" do
-	"Sinatra is working"
+get "/form" do
+	erb :form
 end
+
+post "/list" do 
+	@order = params[:order]
+	@albums = Album.all(:order => [@order.to_sym])
+	@highlight = params[:rank]
+	erb :list
+end	
+
